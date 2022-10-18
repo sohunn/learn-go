@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	Getdata("http://localhost:1111/get")
+	// Getdata("http://localhost:1111/get")
+	PostData("http://localhost:1111/post")
 }
 
 func Getdata(url string) {
@@ -26,4 +27,28 @@ func Getdata(url string) {
 
 	fmt.Println("The byte count is", byteCount)
 	fmt.Println(responseString.String())
+}
+
+func PostData(url string) {
+	requestBody := strings.NewReader(`
+		{
+			"name": "Sohan",
+			"surname": "Shashikumar",
+			"role": "fullstack developer"
+		}
+	`)
+
+	response, err := http.Post(url, "application/json", requestBody)
+	if err != nil {
+		panic(err)
+	}
+
+	defer response.Body.Close()
+
+	data, err := io.ReadAll(response.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(string(data))
 }
