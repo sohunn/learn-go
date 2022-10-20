@@ -15,6 +15,7 @@ type course struct {
 
 func main() {
 	encodeToJSON()
+	decodeJSON()
 }
 
 func encodeToJSON() {
@@ -33,4 +34,37 @@ func encodeToJSON() {
 	}
 
 	fmt.Printf("%s\n", json)
+}
+
+func decodeJSON() {
+	jsonData := []byte(`
+		{
+			"coursename": "ReactJS Bootcamp",
+			"Price": 229,
+			"website": "LearnCodeOnline.in",
+			"tags": ["web-dev","js"]
+    	}
+  	`)
+
+	var lcoCourse course
+	isValidJSON := json.Valid(jsonData)
+
+	if isValidJSON {
+		fmt.Println("Valid JSON")
+		json.Unmarshal(jsonData, &lcoCourse)
+
+		fmt.Printf("%#v\n", lcoCourse)
+	} else {
+		fmt.Println("Not a valid JSON")
+	}
+
+	// used for unknown values (values which cannot be predicted)
+	var myOnlineData map[string]interface{}
+	json.Unmarshal(jsonData, &myOnlineData)
+
+	fmt.Printf("%#v\n", myOnlineData)
+
+	for k, v := range myOnlineData {
+		fmt.Printf("Key is %v and value is %v and type is %T\n", k, v, v)
+	}
 }
