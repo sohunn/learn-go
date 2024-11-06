@@ -11,7 +11,7 @@ func main() {
 
 	myNumber := 25
 	// ampersand means "give me the address of myNumber and i shall store it"
-	var numPointer = &myNumber
+	numPointer := &myNumber
 
 	fmt.Println("Value of numPointer is", numPointer)
 	// * means "give me the value of that memory address"

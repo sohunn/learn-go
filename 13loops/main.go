@@ -26,7 +26,8 @@ func main() {
 	for rogueValue <= 10 {
 
 		if rogueValue == 2 {
-			goto lco // similar to break
+			goto sohan // similar to break
+			// instead of writing logic here
 		}
 
 		// never comes here
@@ -38,6 +39,6 @@ func main() {
 		rogueValue++
 	}
 
-lco:
+sohan:
 	fmt.Println("Jumping at lco.in")
 }

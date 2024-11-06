@@ -6,7 +6,7 @@ func main() {
 
 	sohan := User{"sohan", "sohanshashi0884@gmail.com", true, 19}
 	sohan.GetStatus()
-	sohan.ChangeEmail("shashisohan0884@gmail.com")
+	sohan.ChangeEmail("shamanth@gmail.com")
 	fmt.Println(sohan.Email) // does not change, exactly why pointers come to use
 }
 
@@ -21,7 +21,7 @@ func (u User) GetStatus() {
 	fmt.Printf("Is %v verified? -> %v\n", u.Name, u.Verified)
 }
 
-func (u User) ChangeEmail(newMail string) {
+func (u *User) ChangeEmail(newMail string) {
 	u.Email = newMail
 	fmt.Printf("Email successfully changed to %v\n", u.Email)
 }

@@ -11,6 +11,8 @@ func main() {
 	myDefer()
 }
 
+// One, two, 0, 1, 2, 3, 4
+
 func myDefer() {
 	for i := 0; i < 5; i++ {
 		defer fmt.Println(i)
